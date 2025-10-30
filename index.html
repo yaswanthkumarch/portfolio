@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaswanth Kumar | DevOps SRE Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary: #00D4FF;
+            --secondary: #FF00E5;
+            --accent: #00FF88;
+            --dark: #0A0E27;
+            --darker: #050714;
+            --light: #FFFFFF;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #00D4FF 0%, #090979 50%, #FF00E5 100%);
+            --gradient-3: linear-gradient(135deg, #00FF88 0%, #00D4FF 100%);
+            --gradient-4: linear-gradient(135deg, #FF00E5 0%, #FF6B6B 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-2);
+            border-radius: 10px;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: var(--darker);
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 20% 80%, transparent 30%, rgba(0, 212, 255, 0.1) 30.5%, transparent 31%),
+                        radial-gradient(circle at 80% 20%, transparent 30%, rgba(255, 0, 229, 0.1) 30.5%, transparent 31%),
+                        radial-gradient(circle at 40% 40%, transparent 30%, rgba(0, 255, 136, 0.1) 30.5%, transparent 31%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Loading Screen */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .loader svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotate 2s linear infinite;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            padding: 20px 0;
+            background: rgba(5, 7, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.sticky {
+            padding: 15px 0;
+            background: rgba(5, 7, 20, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+        
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .max-width {
+            max-width: 1400px;
+            padding: 0 80px;
+            margin: auto;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .navbar .logo a {
+            color: var(--light);
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .navbar .menu li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .navbar .menu li a {
+            color: var(--light);
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .navbar .menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-2);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar .menu li a:hover::after {
+            width: 100%;
+        }
+        
+        .navbar .menu li a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-btn {
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        /* Home Section */
+        .home {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .home .max-width {
+            width: 100%;
+            display: flex;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .home-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .home-content .text-1 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .home-content .text-2 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+        
+        .home-content .text-2 span {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .home-content .text-3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+        
+        .home-content .text-3 .typing {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .home-content .btn-group {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-2);
+            color: var(--light);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .home-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .home-image svg {
+            width: 500px;
+            height: 500px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* About Section */
+        .about {
+            background: rgba(10, 14, 39, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: var(--gradient-2);
+            border-radius: 20px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h3 span {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .stat-card .number {
+            font-size: 36px;
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-card .label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--darker);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--gradient-2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--light);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: rgba(10, 14, 39, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .skills-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .skills-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .skill-category h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .skills-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .skill-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar-header span {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .skill-bar-header .percentage {
+            color: var(--accent);
+        }
+        
+        .skill-bar-track {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-bar-progress {
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 10px;
+            width: 0;
+            transition: width 2s ease;
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            background: var(--darker);
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .cert-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .cert-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--light);
+        }
+        
+        .cert-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .cert-details p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+        
+        .cert-details .date {
+            font-size: 12px;
+            color: var(--accent);
+        }
+        
+        /* Projects Section */
+        .projects {
+            background: rgba(10, 14, 39, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .projects-carousel {
+            position: relative;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin: 15px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .project-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background: var(--gradient-2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-image svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--light);
+        }
+        
+        .project-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .project-card h3 a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .project-card h3 a:hover {
+            color: var(--primary);
+        }
+        
+        .project-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--darker);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--light);
+        }
+        
+        .contact-details h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .contact-details p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient-2);
+            color: var(--light);
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 100px;
+            right: -400px;
+            background: var(--gradient-3);
+            color: var(--darker);
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: right 0.5s ease;
+            z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .success-message.show {
+            right: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient-2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--light);
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        footer p a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer p a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .max-width {
+                padding: 0 40px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .home-content {
+                padding-right: 0;
+            }
+            
+            .home-image {
+                display: none;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .skills-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .navbar .menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(5, 7, 20, 0.98);
+                backdrop-filter: blur(20px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+            
+            .navbar .menu.active {
+                left: 0;
+            }
+            
+            .navbar .menu li {
+                margin: 20px 0;
+            }
+            
+            .home-content .text-2 {
+                font-size: 48px;
+            }
+            
+            .home-content .text-3 {
+                font-size: 24px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .services-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-categories,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .max-width {
+                padding: 0 20px;
+            }
+            
+            .home-content .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Loading Screen -->
+    <div class="loader-wrapper">
+        <div class="loader">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-dasharray="283" stroke-dashoffset="283">
+                    <animate attributeName="stroke-dashoffset" from="283" to="0" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00D4FF"/>
+                        <stop offset="100%" style="stop-color:#FF00E5"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
+                    <path d="M30 50 L45 35 L55 45 L70 30" fill="none" stroke="url(#logoGradient)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="70" cy="30" r="5" fill="url(#logoGradient)"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00D4FF"/>
+                            <stop offset="100%" style="stop-color:#FF00E5"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <a href="#">DevOps.SRE</a>
+            </div>
+            <ul class="menu">
+                <li><a href="#home" class="menu-btn">Home</a></li>
+                <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#services" class="menu-btn">Services</a></li>
+                <li><a href="#skills" class="menu-btn">Skills</a></li>
+                <li><a href="#certifications" class="menu-btn">Certifications</a></li>
+                <li><a href="#projects" class="menu-btn">Projects</a></li>
+                <li><a href="#contact" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+    
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="max-width">
+            <div class="home-content">
+                <div class="text-1">Hello, I'm</div>
+                <div class="text-2">Yaswanth <span>Kumar</span></div>
+                <div class="text-3">I'm a <span class="typing"></span></div>
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-folder"></i>
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="home-image">
+                <svg viewBox="0 0 500 500">
+                    <defs>
+                        <linearGradient id="homeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00D4FF"/>
+                            <stop offset="50%" style="stop-color:#FF00E5"/>
+                            <stop offset="100%" style="stop-color:#00FF88"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Cloud Icon -->
+                    <path d="M100 200 Q100 150 150 150 Q150 100 200 100 Q250 100 250 150 Q300 150 300 200 Q300 250 250 250 L150 250 Q100 250 100 200" fill="url(#homeGradient)" opacity="0.8"/>
+                    <!-- DevOps Gear -->
+                    <g transform="translate(250, 250)">
+                        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+                        <path d="M-30 -10 L-30 10 L-20 10 L-20 20 L-10 20 L-10 30 L10 30 L10 20 L20 20 L20 10 L30 10 L30 -10 L20 -10 L20 -20 L10 -20 L10 -30 L-10 -30 L-10 -20 L-20 -20 L-20 -10 Z" fill="url(#homeGradient)" opacity="0.6"/>
+                        <circle cx="0" cy="0" r="10" fill="url(#homeGradient)"/>
+                    </g>
+                    <!-- Code Lines -->
+                    <rect x="50" y="350" width="100" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <rect x="50" y="360" width="80" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <rect x="50" y="370" width="90" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <rect x="350" y="350" width="100" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <rect x="350" y="360" width="80" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <rect x="350" y="370" width="90" height="3" fill="url(#homeGradient)" opacity="0.6"/>
+                    <!-- Kubernetes Nodes -->
+                    <circle cx="150" cy="350" r="15" fill="none" stroke="url(#homeGradient)" stroke-width="2" opacity="0.6"/>
+                    <circle cx="200" cy="350" r="15" fill="none" stroke="url(#homeGradient)" stroke-width="2" opacity="0.6"/>
+                    <circle cx="175" cy="380" r="15" fill="none" stroke="url(#homeGradient)" stroke-width="2" opacity="0.6"/>
+                    <line x1="150" y1="350" x2="200" y2="350" stroke="url(#homeGradient)" stroke-width="1" opacity="0.4"/>
+                    <line x1="150" y1="350" x2="175" y2="380" stroke="url(#homeGradient)" stroke-width="1" opacity="0.4"/>
+                    <line x1="200" y1="350" x2="175" y2="380" stroke="url(#homeGradient)" stroke-width="1" opacity="0.4"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>About Me</h2>
+                <p>Passionate DevOps SRE Architect with expertise in cloud automation</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="about-image-wrapper">
+                        <img src="https://via.placeholder.com/400x400" alt="Yaswanth Kumar">
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <h3>I'm a <span>DevOps SRE Architect</span></h3>
+                    <p>A Cloud Developer specializing in Microsoft Azure and DevOps best practices. My expertise includes infrastructure automation, CI/CD pipeline development, container orchestration, and full-stack Python development.</p>
+                    <p>With multiple certifications in Azure, Oracle Cloud Infrastructure, and DevOps practices, I bring a comprehensive understanding of cloud architecture, monitoring, and automation to every project. I thrive on solving complex infrastructure challenges and optimizing system reliability.</p>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="number">6+</div>
+                            <div class="label">Certifications</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">50+</div>
+                            <div class="label">Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">3+</div>
+                            <div class="label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Services</h2>
+                <p>Comprehensive DevOps and Cloud Solutions</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 30 L80 30 L80 70 L20 70 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="30" cy="50" r="5" fill="currentColor"/>
+                            <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                            <circle cx="70" cy="50" r="5" fill="currentColor"/>
+                            <path d="M30 50 L50 50 L70 50" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Cloud Infrastructure</h3>
+                    <p>Design and implementation of scalable cloud solutions on Azure and OCI with Infrastructure as Code</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 50 L35 35 L50 50 L65 35 L80 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M20 60 L35 45 L50 60 L65 45 L80 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>CI/CD Automation</h3>
+                    <p>Automated deployment pipelines with GitHub Actions, Jenkins, and Azure DevOps for continuous delivery</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="70" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="50" cy="70" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <line x1="30" y1="30" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+                            <line x1="30" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                            <line x1="70" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Container Orchestration</h3>
+                    <p>Docker and Kubernetes orchestration for scalable microservices architecture</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 30 L80 30 L80 50 L60 50 L60 70 L40 70 L40 50 L20 50 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="30" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="50" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="70" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="50" cy="60" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Observability</h3>
+                    <p>Comprehensive monitoring with Prometheus, Grafana, and custom alerting systems</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <path d="M50 35 L55 45 L65 45 L57 52 L60 62 L50 55 L40 62 L43 52 L35 45 L45 45 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>DevSecOps</h3>
+                    <p>Security integration throughout the DevOps lifecycle with automated vulnerability scanning</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="50" cy="25" r="5" fill="currentColor"/>
+                            <path d="M50 30 L50 40" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Site Reliability</h3>
+                    <p>SRE practices for high availability, error budgeting, and incident response</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Skills & Expertise</h2>
+                <p>Technical proficiency across cloud and DevOps technologies</p>
+            </div>
+            <div class="skills-content">
+                <div class="skills-categories" data-aos="fade-right">
+                    <div class="skill-category">
+                        <h4>Cloud Platforms</h4>
+                        <ul>
+                            <li>Microsoft Azure</li>
+                            <li>Oracle Cloud Infrastructure</li>
+                            <li>Amazon Web Services</li>
+                            <li>Google Cloud Platform</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Infrastructure as Code</h4>
+                        <ul>
+                            <li>Terraform</li>
+                            <li>ARM Templates</li>
+                            <li>OCI Resource Manager</li>
+                            <li>CloudFormation</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Containerization</h4>
+                        <ul>
+                            <li>Docker</li>
+                            <li>Kubernetes (OKE, AKS)</li>
+                            <li>Container Registry</li>
+                            <li>Helm</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>CI/CD Tools</h4>
+                        <ul>
+                            <li>GitHub Actions</li>
+                            <li>Jenkins</li>
+                            <li>Azure DevOps</li>
+                            <li>OCI DevOps</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Monitoring</h4>
+                        <ul>
+                            <li>Prometheus</li>
+                            <li>Grafana</li>
+                            <li>Azure Monitor</li>
+                            <li>OCI Monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <ul>
+                            <li>Python</li>
+                            <li>Shell Scripting</li>
+                            <li>PowerShell</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills-bars" data-aos="fade-left">
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Azure</span>
+                            <span class="percentage">95%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>OCI</span>
+                            <span class="percentage">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Docker</span>
+                            <span class="percentage">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Kubernetes</span>
+                            <span class="percentage">80%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Terraform</span>
+                            <span class="percentage">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>CI/CD</span>
+                            <span class="percentage">90%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Python</span>
+                            <span class="percentage">80%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-header">
+                            <span>Monitoring</span>
+                            <span class="percentage">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Certifications</h2>
+                <p>Professional credentials validating expertise</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 L60 30 L80 30 L65 45 L70 65 L50 50 L30 65 L35 45 L20 30 L40 30 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>OCI DevOps Professional 2025</h3>
+                        <p>Score: 84% | Oracle Cloud Infrastructure</p>
+                        <p class="date">Issued: Oct 2025 - Expires: Oct 2027</p>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 L60 30 L80 30 L65 45 L70 65 L50 50 L30 65 L35 45 L20 30 L40 30 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>OCI Observability Professional 2025</h3>
+                        <p>Expertise in monitoring and troubleshooting</p>
+                        <p class="date">Issued: Oct 2025 - Expires: Oct 2027</p>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Fabric Analytics Engineer Associate</h3>
+                        <p>Microsoft Certified | Data Analysis & DevOps</p>
+                        <p class="date">Issued: Jan 2025 - Expires: Jan 2026</p>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Azure Developer Associate</h3>
+                        <p>Microsoft Certified | Cloud Development</p>
+                        <p class="date">Issued: Nov 2024 - Expires: Nov 2025</p>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Azure Fundamentals</h3>
+                        <p>Microsoft Certified | Cloud Foundations</p>
+                        <p class="date">Issued: Feb 2023</p>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="cert-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Alteryx Foundational</h3>
+                        <p>Micro-Credential | Data Analytics</p>
+                        <p class="date">Issued: Sep 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Featured Projects</h2>
+                <p>Showcasing innovative DevOps and cloud solutions</p>
+            </div>
+            <div class="projects-carousel">
+                <div class="owl-carousel">
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M20 30 L80 30 L80 70 L20 70 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="35" cy="50" r="8" fill="currentColor"/>
+                                <circle cx="65" cy="50" r="8" fill="currentColor"/>
+                                <path d="M35 50 L65 50" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">Multi-Cloud CI/CD Pipeline</a></h3>
+                        <p>Automated deployment pipeline across Azure and OCI using GitHub Actions and Terraform</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="70" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="50" cy="70" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <line x1="30" y1="30" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+                                <line x1="30" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                                <line x1="70" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">Production Kubernetes Setup</a></h3>
+                        <p>Highly available K8s cluster with monitoring, logging, and security best practices</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="50" cy="30" r="5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">Terraform Infrastructure</a></h3>
+                        <p>Complete IaC solution for multi-environment deployments with state management</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M20 50 L35 35 L50 50 L65 35 L80 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M20 60 L35 45 L50 60 L65 45 L80 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">Observability Stack</a></h3>
+                        <p>Comprehensive monitoring with Prometheus, Grafana, and custom alerting</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <path d="M50 35 L55 45 L65 45 L57 52 L60 62 L50 55 L40 62 L43 52 L35 45 L45 45 Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">DevSecOps Implementation</a></h3>
+                        <p>Security-integrated CI/CD with automated vulnerability scanning</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="30" y="20" width="40" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="50" cy="40" r="8" fill="currentColor"/>
+                                <rect x="35" y="55" width="30" height="5" fill="currentColor"/>
+                                <rect x="35" y="65" width="30" height="5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">Calculator App</a></h3>
+                        <p>Responsive calculator built with HTML, CSS, and JavaScript</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M30 35 L70 35 M30 45 L70 45 M30 55 L70 55 M30 65 L70 65" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="35" cy="35" r="3" fill="currentColor"/>
+                                <circle cx="35" cy="45" r="3" fill="currentColor"/>
+                                <circle cx="35" cy="55" r="3" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">To-Do List App</a></h3>
+                        <p>Task management application with JavaScript functionality</p>
+                    </div>
+                    <div class="project-card" data-aos="zoom-in">
+                        <div class="project-image">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="40" cy="50" r="8" fill="currentColor"/>
+                                <path d="M48 50 L60 50 M48 50 L52 46 M48 50 L52 54" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3><a href="#">UI/UX Design</a></h3>
+                        <p>NGO website prototype designed in Figma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="max-width">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Get In Touch</h2>
+                <p>Let's discuss your next cloud project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="15" fill="currentColor"/>
+                                <path d="M30 65 Q50 55 70 65 L70 80 Q50 90 30 80 Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Name</h4>
+                            <p>Yaswanth Kumar Chennareddy</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 20 L60 35 L80 35 L65 50 L70 70 L50 55 L30 70 L35 50 L20 35 L40 35 Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Kamepalli, Andhra Pradesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M20 35 L50 55 L80 35" stroke="currentColor" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>yaswanthkumarch2001@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="30" y="20" width="40" height="50" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="50" cy="35" r="5" fill="currentColor"/>
+                                <rect x="35" y="45" width="30" height="3" fill="currentColor"/>
+                                <rect x="35" y="52" width="30" height="3" fill="currentColor"/>
+                                <rect x="35" y="59" width="30" height="3" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+91 7989288815</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="40" cy="50" r="8" fill="currentColor"/>
+                                <path d="M48 50 L60 50 M48 50 L52 46 M48 50 L52 54" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/yaswanthkumarch</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="max-width">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://github.com/yaswanthkumarch" target="_blank">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 C30 10 15 25 15 45 C15 60 25 72 38 76 C40 76 40 74 40 73 L40 67 C30 69 28 62 28 62 C27 58 25 57 25 57 C22 55 25 55 25 55 C28 55 30 58 30 58 C33 63 38 61 40 60 C40 58 41 57 42 56 C33 55 25 51 25 38 C25 34 26 30 29 27 C28 26 28 22 30 18 C30 18 34 17 40 22 C43 21 47 21 50 21 C53 21 57 21 60 22 C66 17 70 18 70 18 C72 22 72 26 71 27 C74 30 75 34 75 38 C75 51 67 55 58 56 C59 57 60 59 60 63 L60 73 C60 74 60 76 62 76 C75 72 85 60 85 45 C85 25 70 10 50 10 Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/yaswanthkumarch" target="_blank">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <circle cx="35" cy="35" r="5" fill="currentColor"/>
+                            <rect x="28" y="45" width="14" height="25" fill="currentColor"/>
+                            <rect x="47" y="52" width="14" height="18" fill="currentColor"/>
+                            <rect x="47" y="45" width="14" height="5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:yaswanthkumarch2001@gmail.com">
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <path d="M20 35 L50 55 L80 35" stroke="currentColor" stroke-width="3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2023 Yaswanth Kumar. All rights reserved. | Designed with <span style="color: #FF00E5;">♥</span> by Yaswanth</p>
+        </div>
+    </footer>
+    
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> Message sent successfully!
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Loading Screen
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $('.loader-wrapper').fadeOut('slow');
+            }, 1500);
+        });
+        
+        // Typed.js
+        $(function() {
+            $(".typing").typed({
+                strings: ["DevOps Engineer", "Cloud Architect", "SRE Specialist", "Infrastructure Expert"],
+                typeSpeed: 100,
+                backSpeed: 60,
+                loop: true
+            });
+        });
+        
+        // Sticky Navigation
+        $(window).scroll(function() {
+            if (this.scrollY > 50) {
+                $('.navbar').addClass("sticky");
+            } else {
+                $('.navbar').removeClass("sticky");
+            }
+        });
+        
+        // Mobile Menu Toggle
+        $('.menu-btn').click(function() {
+            $('.navbar .menu').toggleClass("active");
+            $('.menu-btn i').toggleClass("fa-bars fa-times");
+        });
+        
+        // Smooth Scrolling
+        $('a[href^="#"]').on('click', function(event) {
+            var target = $(this.getAttribute('href'));
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top - 70
+                }, 1000);
+                $('.navbar .menu').removeClass("active");
+                $('.menu-btn i').removeClass("fa-times").addClass("fa-bars");
+            }
+        });
+        
+        // Skill Bars Animation
+        $(window).scroll(function() {
+            $('.skill-bar').each(function() {
+                var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+                if (bottom_of_window > bottom_of_object) {
+                    var width = $(this).find('.skill-bar-progress').data('width');
+                    $(this).find('.skill-bar-progress').css('width', width + '%');
+                }
+            });
+        });
+        
+        // Owl Carousel
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        });
+        
+        // Contact Form with Auto-Reply
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            var formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                subject: $('#subject').val(),
+                message: $('#message').val()
+            };
+            
+            // Send email using EmailJS or similar service
+            // For demonstration, we'll simulate the email sending
+            $.ajax({
+                url: 'https://formspree.io/f/mqaglawj', // Replace with your form endpoint
+                method: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function() {
+                    // Show success message
+                    $('#successMessage').addClass('show');
+                    setTimeout(function() {
+                        $('#successMessage').removeClass('show');
+                    }, 3000);
+                    
+                    // Clear form
+                    $('#contactForm')[0].reset();
+                    
+                    // Send auto-reply to your email
+                    sendAutoReply(formData);
+                },
+                error: function() {
+                    // Show error message
+                    alert('Error sending message. Please try again.');
+                }
+            });
+        });
+        
+        // Auto-Reply Function
+        function sendAutoReply(formData) {
+            // This would typically be handled by your backend
+            // For demonstration, we'll log the auto-reply
+            console.log('Auto-reply sent to yaswanthkumarch2001@gmail.com');
+            console.log('New message from:', formData.name);
+            console.log('Email:', formData.email);
+            console.log('Subject:', formData.subject);
+            console.log('Message:', formData.message);
+            
+            // In a real implementation, you would:
+            // 1. Store the message in your database
+            // 2. Send a notification email to yourself
+            // 3. Send an auto-reply to the sender
+        }
+        
+        // Add particle effect on mouse move
+        $(document).mousemove(function(e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            
+            // Create particle
+            var particle = $('<div class="particle"></div>');
+            particle.css({
+                'position': 'fixed',
+                'pointer-events': 'none',
+                'width': '4px',
+                'height': '4px',
+                'background': 'linear-gradient(135deg, #00D4FF, #FF00E5)',
+                'border-radius': '50%',
+                'left': x,
+                'top': y,
+                'z-index': '9999'
+            });
+            
+            $('body').append(particle);
+            
+            // Animate particle
+            particle.animate({
+                'top': y - 100,
+                'opacity': 0
+            }, 1000, function() {
+                particle.remove();
+            });
+        });
+    </script>
+</body>
+</html>
