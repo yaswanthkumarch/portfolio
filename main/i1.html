@@ -228,6 +228,20 @@
             background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
+
+        .fab.fa-oracle {
+  display: inline-block;
+  width: 9.3em;
+  height: 1em;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg') no-repeat center;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+/* .fab.fa-oracle {
+  filter: brightness(0) invert(1);
+} */
+
         
         @keyframes pulse {
             0%, 100% { opacity: 0.5; }
@@ -317,11 +331,6 @@
             background: transparent;
             color: var(--light);
             border: 2px solid var(--primary);
-        }
-        
-        .btn-cv {
-            background: linear-gradient(135deg, #00FF88 0%, #00D4FF 100%);
-            color: var(--darker);
         }
         
         .btn::before {
@@ -754,12 +763,6 @@
         .cert-icon i {
             font-size: 30px;
             color: var(--light);
-        }
-        
-        .cert-icon img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
         }
         
         .cert-details h3 {
@@ -1238,10 +1241,6 @@
                         <i class="fas fa-folder"></i>
                         View Projects
                     </a>
-                    <a href="#" class="btn btn-cv" id="downloadCV" target="_blank">
-                        <i class="fas fa-download"></i>
-                        Download CV
-                    </a>
                 </div>
             </div>
             <div class="home-image">
@@ -1434,42 +1433,6 @@
                             <li>JavaScript</li>
                         </ul>
                     </div>
-                    <div class="skill-category">
-                        <h4>SRE Practices</h4>
-                        <ul>
-                            <li>Service Level Objectives</li>
-                            <li>Error Budgeting</li>
-                            <li>Incident Management</li>
-                            <li>Postmortem Analysis</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Cloud Architecture</h4>
-                        <ul>
-                            <li>Microservices Design</li>
-                            <li>Serverless Computing</li>
-                            <li>Hybrid Cloud</li>
-                            <li>Multi-Cloud Strategy</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>DevOps Automation</h4>
-                        <ul>
-                            <li>Configuration Management</li>
-                            <li>Infrastructure Provisioning</li>
-                            <li>Automated Testing</li>
-                            <li>Release Management</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Python Full Stack</h4>
-                        <ul>
-                            <li>Django/Flask Frameworks</li>
-                            <li>REST API Development</li>
-                            <li>Database Integration</li>
-                            <li>Frontend Technologies</li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="skills-bars" data-aos="fade-left">
                     <div class="skill-bar">
@@ -1544,24 +1507,6 @@
                             <div class="skill-bar-progress" data-width="85"></div>
                         </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-header">
-                            <span>SRE</span>
-                            <span class="percentage">85%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-header">
-                            <span>Cloud Architecture</span>
-                            <span class="percentage">90%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-progress" data-width="90"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1577,7 +1522,7 @@
             <div class="certifications-grid">
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="cert-icon">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle">
+                        <i class="fab fa-oracle"></i>
                     </div>
                     <div class="cert-details">
                         <h3>OCI DevOps Professional 2025</h3>
@@ -1587,14 +1532,8 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="cert-icon">
-  <img 
-    src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" 
-    alt="Oracle" 
-    width="60" 
-    height="20"
-  >
-</div>
-
+                        <i class="fab fa-oracle"></i>
+                    </div>
                     <div class="cert-details">
                         <h3>OCI Observability Professional 2025</h3>
                         <p>Expertise in monitoring and troubleshooting</p>
@@ -1654,6 +1593,19 @@
             </div>
             <div class="projects-carousel">
                 <div class="owl-carousel">
+
+                <div class="project-card" data-aos="zoom-in">
+                    <div class="project-image">
+                        <svg viewBox="0 0 100 100">
+                        <rect x="15" y="25" width="70" height="50" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                        <path d="M25 35 H75 M25 45 H75 M25 55 H75 M25 65 H75" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="80" cy="70" r="5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3><a href="#">Server Auditing Script</a></h3>
+                    <p>Automated multi-host Linux server auditing and port 80 scanner using Bash.</p>
+                 </div>
+
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
                             <i class="fas fa-code-branch"></i>
@@ -1997,10 +1949,6 @@
                 particle.remove();
             });
         });
-        
-        // Set CV Download Link
-        // Replace 'YOUR_CV_LINK_HERE' with your actual CV link
-        $('#downloadCV').attr('href', 'https://drive.google.com/file/d/1ufpG3fKSv5uKw9xQAApm27baTncJGGto/view?usp=sharing');
     </script>
 </body>
 </html>

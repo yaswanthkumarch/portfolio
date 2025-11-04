@@ -319,11 +319,6 @@
             border: 2px solid var(--primary);
         }
         
-        .btn-cv {
-            background: linear-gradient(135deg, #00FF88 0%, #00D4FF 100%);
-            color: var(--darker);
-        }
-        
         .btn::before {
             content: '';
             position: absolute;
@@ -458,12 +453,12 @@
         }
         
         .about-text h3 span {
-            background: linear-gradient(135deg, #00D4FF 0%, #FF00E5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
+    background: linear-gradient(135deg, #00D4FF 0%, #FF00E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
         
         .about-text p {
             font-size: 16px;
@@ -572,9 +567,10 @@
             transform: scale(1.1) rotate(5deg);
         }
         
-        .service-icon i {
-            font-size: 36px;
-            color: var(--light);
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--light);
         }
         
         .service-card h3 {
@@ -751,15 +747,10 @@
             flex-shrink: 0;
         }
         
-        .cert-icon i {
-            font-size: 30px;
-            color: var(--light);
-        }
-        
-        .cert-icon img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
+        .cert-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--light);
         }
         
         .cert-details h3 {
@@ -817,9 +808,10 @@
             justify-content: center;
         }
         
-        .project-image i {
-            font-size: 70px;
-            color: var(--light);
+        .project-image svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--light);
         }
         
         .project-card h3 {
@@ -890,9 +882,10 @@
             flex-shrink: 0;
         }
         
-        .contact-icon i {
-            font-size: 24px;
-            color: var(--light);
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--light);
         }
         
         .contact-details h4 {
@@ -1050,9 +1043,10 @@
             box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
         
-        .social-links a i {
-            font-size: 20px;
-            color: var(--light);
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--light);
         }
         
         footer p {
@@ -1238,10 +1232,6 @@
                         <i class="fas fa-folder"></i>
                         View Projects
                     </a>
-                    <a href="#" class="btn btn-cv" id="downloadCV" target="_blank">
-                        <i class="fas fa-download"></i>
-                        Download CV
-                    </a>
                 </div>
             </div>
             <div class="home-image">
@@ -1327,42 +1317,72 @@
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 30 L80 30 L80 70 L20 70 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="30" cy="50" r="5" fill="currentColor"/>
+                            <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                            <circle cx="70" cy="50" r="5" fill="currentColor"/>
+                            <path d="M30 50 L50 50 L70 50" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
                     <h3>Cloud Infrastructure</h3>
                     <p>Design and implementation of scalable cloud solutions on Azure and OCI with Infrastructure as Code</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">
-                        <i class="fas fa-code-branch"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 50 L35 35 L50 50 L65 35 L80 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M20 60 L35 45 L50 60 L65 45 L80 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
                     </div>
                     <h3>CI/CD Automation</h3>
                     <p>Automated deployment pipelines with GitHub Actions, Jenkins, and Azure DevOps for continuous delivery</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="70" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="50" cy="70" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <line x1="30" y1="30" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+                            <line x1="30" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                            <line x1="70" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
                     <h3>Container Orchestration</h3>
                     <p>Docker and Kubernetes orchestration for scalable microservices architecture</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M20 30 L80 30 L80 50 L60 50 L60 70 L40 70 L40 50 L20 50 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="30" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="50" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="70" cy="40" r="3" fill="currentColor"/>
+                            <circle cx="50" cy="60" r="3" fill="currentColor"/>
+                        </svg>
                     </div>
                     <h3>Observability</h3>
                     <p>Comprehensive monitoring with Prometheus, Grafana, and custom alerting systems</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <path d="M50 35 L55 45 L65 45 L57 52 L60 62 L50 55 L40 62 L43 52 L35 45 L45 45 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <h3>DevSecOps</h3>
                     <p>Security integration throughout the DevOps lifecycle with automated vulnerability scanning</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-icon">
-                        <i class="fas fa-server"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="50" cy="25" r="5" fill="currentColor"/>
+                            <path d="M50 30 L50 40" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
                     <h3>Site Reliability</h3>
                     <p>SRE practices for high availability, error budgeting, and incident response</p>
@@ -1432,42 +1452,6 @@
                             <li>Shell Scripting</li>
                             <li>PowerShell</li>
                             <li>JavaScript</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>SRE Practices</h4>
-                        <ul>
-                            <li>Service Level Objectives</li>
-                            <li>Error Budgeting</li>
-                            <li>Incident Management</li>
-                            <li>Postmortem Analysis</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Cloud Architecture</h4>
-                        <ul>
-                            <li>Microservices Design</li>
-                            <li>Serverless Computing</li>
-                            <li>Hybrid Cloud</li>
-                            <li>Multi-Cloud Strategy</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>DevOps Automation</h4>
-                        <ul>
-                            <li>Configuration Management</li>
-                            <li>Infrastructure Provisioning</li>
-                            <li>Automated Testing</li>
-                            <li>Release Management</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Python Full Stack</h4>
-                        <ul>
-                            <li>Django/Flask Frameworks</li>
-                            <li>REST API Development</li>
-                            <li>Database Integration</li>
-                            <li>Frontend Technologies</li>
                         </ul>
                     </div>
                 </div>
@@ -1544,24 +1528,6 @@
                             <div class="skill-bar-progress" data-width="85"></div>
                         </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-header">
-                            <span>SRE</span>
-                            <span class="percentage">85%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-header">
-                            <span>Cloud Architecture</span>
-                            <span class="percentage">90%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-progress" data-width="90"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1577,7 +1543,9 @@
             <div class="certifications-grid">
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="cert-icon">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 L60 30 L80 30 L65 45 L70 65 L50 50 L30 65 L35 45 L20 30 L40 30 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="cert-details">
                         <h3>OCI DevOps Professional 2025</h3>
@@ -1587,14 +1555,10 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="cert-icon">
-  <img 
-    src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" 
-    alt="Oracle" 
-    width="60" 
-    height="20"
-  >
-</div>
-
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 L60 30 L80 30 L65 45 L70 65 L50 50 L30 65 L35 45 L20 30 L40 30 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <div class="cert-details">
                         <h3>OCI Observability Professional 2025</h3>
                         <p>Expertise in monitoring and troubleshooting</p>
@@ -1603,7 +1567,10 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="cert-icon">
-                        <i class="fab fa-microsoft"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
                     </div>
                     <div class="cert-details">
                         <h3>Fabric Analytics Engineer Associate</h3>
@@ -1613,7 +1580,10 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="cert-icon">
-                        <i class="fab fa-microsoft"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
                     </div>
                     <div class="cert-details">
                         <h3>Azure Developer Associate</h3>
@@ -1623,7 +1593,10 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="cert-icon">
-                        <i class="fab fa-microsoft"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="currentColor" rx="5"/>
+                            <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="white" stroke-width="2"/>
+                        </svg>
                     </div>
                     <div class="cert-details">
                         <h3>Azure Fundamentals</h3>
@@ -1633,7 +1606,9 @@
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="cert-details">
                         <h3>Alteryx Foundational</h3>
@@ -1656,56 +1631,93 @@
                 <div class="owl-carousel">
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-code-branch"></i>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M20 30 L80 30 L80 70 L20 70 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="35" cy="50" r="8" fill="currentColor"/>
+                                <circle cx="65" cy="50" r="8" fill="currentColor"/>
+                                <path d="M35 50 L65 50" stroke="currentColor" stroke-width="2"/>
+                            </svg>
                         </div>
                         <h3><a href="#">Multi-Cloud CI/CD Pipeline</a></h3>
                         <p>Automated deployment pipeline across Azure and OCI using GitHub Actions and Terraform</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-project-diagram"></i>
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="70" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <circle cx="50" cy="70" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <line x1="30" y1="30" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+                                <line x1="30" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                                <line x1="70" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="2"/>
+                            </svg>
                         </div>
                         <h3><a href="#">Production Kubernetes Setup</a></h3>
                         <p>Highly available K8s cluster with monitoring, logging, and security best practices</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-server"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M30 40 L70 40 M30 50 L70 50 M30 60 L70 60" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="50" cy="30" r="5" fill="currentColor"/>
+                            </svg>
                         </div>
                         <h3><a href="#">Terraform Infrastructure</a></h3>
                         <p>Complete IaC solution for multi-environment deployments with state management</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-chart-line"></i>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M20 50 L35 35 L50 50 L65 35 L80 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M20 60 L35 45 L50 60 L65 45 L80 60" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
                         </div>
                         <h3><a href="#">Observability Stack</a></h3>
                         <p>Comprehensive monitoring with Prometheus, Grafana, and custom alerting</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-shield-alt"></i>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <path d="M50 35 L55 45 L65 45 L57 52 L60 62 L50 55 L40 62 L43 52 L35 45 L45 45 Z" fill="currentColor"/>
+                            </svg>
                         </div>
                         <h3><a href="#">DevSecOps Implementation</a></h3>
                         <p>Security-integrated CI/CD with automated vulnerability scanning</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-calculator"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="30" y="20" width="40" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="50" cy="40" r="8" fill="currentColor"/>
+                                <rect x="35" y="55" width="30" height="5" fill="currentColor"/>
+                                <rect x="35" y="65" width="30" height="5" fill="currentColor"/>
+                            </svg>
                         </div>
                         <h3><a href="#">Calculator App</a></h3>
                         <p>Responsive calculator built with HTML, CSS, and JavaScript</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-tasks"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M30 35 L70 35 M30 45 L70 45 M30 55 L70 55 M30 65 L70 65" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="35" cy="35" r="3" fill="currentColor"/>
+                                <circle cx="35" cy="45" r="3" fill="currentColor"/>
+                                <circle cx="35" cy="55" r="3" fill="currentColor"/>
+                            </svg>
                         </div>
                         <h3><a href="#">To-Do List App</a></h3>
                         <p>Task management application with JavaScript functionality</p>
                     </div>
                     <div class="project-card" data-aos="zoom-in">
                         <div class="project-image">
-                            <i class="fas fa-paint-brush"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="40" cy="50" r="8" fill="currentColor"/>
+                                <path d="M48 50 L60 50 M48 50 L52 46 M48 50 L52 54" stroke="currentColor" stroke-width="2"/>
+                            </svg>
                         </div>
                         <h3><a href="#">UI/UX Design</a></h3>
                         <p>NGO website prototype designed in Figma</p>
@@ -1726,7 +1738,10 @@
                 <div class="contact-info" data-aos="fade-right">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-user"></i>
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="15" fill="currentColor"/>
+                                <path d="M30 65 Q50 55 70 65 L70 80 Q50 90 30 80 Z" fill="currentColor"/>
+                            </svg>
                         </div>
                         <div class="contact-details">
                             <h4>Name</h4>
@@ -1735,7 +1750,9 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 20 L60 35 L80 35 L65 50 L70 70 L50 55 L30 70 L35 50 L20 35 L40 35 Z" fill="currentColor"/>
+                            </svg>
                         </div>
                         <div class="contact-details">
                             <h4>Location</h4>
@@ -1744,7 +1761,10 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <path d="M20 35 L50 55 L80 35" stroke="currentColor" stroke-width="3"/>
+                            </svg>
                         </div>
                         <div class="contact-details">
                             <h4>Email</h4>
@@ -1753,7 +1773,13 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="30" y="20" width="40" height="50" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="50" cy="35" r="5" fill="currentColor"/>
+                                <rect x="35" y="45" width="30" height="3" fill="currentColor"/>
+                                <rect x="35" y="52" width="30" height="3" fill="currentColor"/>
+                                <rect x="35" y="59" width="30" height="3" fill="currentColor"/>
+                            </svg>
                         </div>
                         <div class="contact-details">
                             <h4>Phone</h4>
@@ -1762,7 +1788,11 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                                <circle cx="40" cy="50" r="8" fill="currentColor"/>
+                                <path d="M48 50 L60 50 M48 50 L52 46 M48 50 L52 54" stroke="currentColor" stroke-width="2"/>
+                            </svg>
                         </div>
                         <div class="contact-details">
                             <h4>LinkedIn</h4>
@@ -1805,13 +1835,24 @@
             <div class="footer-content">
                 <div class="social-links">
                     <a href="https://github.com/yaswanthkumarch" target="_blank">
-                        <i class="fab fa-github"></i>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50 10 C30 10 15 25 15 45 C15 60 25 72 38 76 C40 76 40 74 40 73 L40 67 C30 69 28 62 28 62 C27 58 25 57 25 57 C22 55 25 55 25 55 C28 55 30 58 30 58 C33 63 38 61 40 60 C40 58 41 57 42 56 C33 55 25 51 25 38 C25 34 26 30 29 27 C28 26 28 22 30 18 C30 18 34 17 40 22 C43 21 47 21 50 21 C53 21 57 21 60 22 C66 17 70 18 70 18 C72 22 72 26 71 27 C74 30 75 34 75 38 C75 51 67 55 58 56 C59 57 60 59 60 63 L60 73 C60 74 60 76 62 76 C75 72 85 60 85 45 C85 25 70 10 50 10 Z" fill="currentColor"/>
+                        </svg>
                     </a>
                     <a href="https://linkedin.com/in/yaswanthkumarch" target="_blank">
-                        <i class="fab fa-linkedin"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <circle cx="35" cy="35" r="5" fill="currentColor"/>
+                            <rect x="28" y="45" width="14" height="25" fill="currentColor"/>
+                            <rect x="47" y="52" width="14" height="18" fill="currentColor"/>
+                            <rect x="47" y="45" width="14" height="5" fill="currentColor"/>
+                        </svg>
                     </a>
                     <a href="mailto:yaswanthkumarch2001@gmail.com">
-                        <i class="fas fa-envelope"></i>
+                        <svg viewBox="0 0 100 100">
+                            <rect x="20" y="30" width="60" height="40" fill="none" stroke="currentColor" stroke-width="3" rx="5"/>
+                            <path d="M20 35 L50 55 L80 35" stroke="currentColor" stroke-width="3"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -1997,10 +2038,6 @@
                 particle.remove();
             });
         });
-        
-        // Set CV Download Link
-        // Replace 'YOUR_CV_LINK_HERE' with your actual CV link
-        $('#downloadCV').attr('href', 'https://drive.google.com/file/d/1ufpG3fKSv5uKw9xQAApm27baTncJGGto/view?usp=sharing');
     </script>
 </body>
 </html>
